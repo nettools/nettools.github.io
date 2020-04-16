@@ -1,199 +1,91 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+---
+{% capture overview %}
+# Overview
 
-
-    <title>Nettools – Linux Network Management Tools</title>
-    <meta name="title" content="Nettools – Linux Network Management Tools" />
-    <meta property="og:title" content="Nettools – Linux Network Management Tools" />
-
-
-
-    <meta name="description" content="Linux Network Management Tools">
-    <meta property="og:description" content="Linux Network Management Tools" />
-
-
-    <meta name="author" content="Nettools Project" />
-
-    <link rel="shortcut icon" href="/images/nettools.ico" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/media-icons.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css" />
-  </head>
-
-
-  <body>
-    <header class="tc pv4">
-      <div>
-        <a href="/">
-
-          <img class="h3 w3"
-               alt="Back to home"
-               src="/images/nettools.svg" />
-
-        </a>
-        <h1 class="f5 f4-ns fw6 black-70">Nettools</h1>
-        <h2 class="f6 black-70 fw2 ttu tracked">Linux Network Management Tools</h2>
-      </div>
-
-      <nav class="lh-copy">
-        <a href="/"
-           class="mh2 link blue hover-mid-gray">Home</a>
-
-        <a href="https://github.com/nettools"
-           class="mh2 link blue hover-mid-gray">@GitHub</a>
-
-      </nav>
-    </header>
-
-    <main class="mw7 overflow-hidden
-                 center pv4 ph2
-                 bt b--light-gray
-                 lh-copy markdown">
-<article>
-
-
-<h1 id="overview">Overview</h1>
-
-<p>The Nettools Project is a reusable implementation of network configuration
+The Nettools Project is a reusable implementation of network configuration
 standards for Linux. At its core, it provides independent libraries that
 implement the most common RFCs related to network configuration and management.
 On top of these, it provides services that extend these libraries, as well as
 other networking resources, to provide an integrated view of all these sources
-at runtime.</p>
+at runtime.
 
-<p>The Nettools Project implements standards that are at the core of network
+The Nettools Project implements standards that are at the core of network
 configuration. While many of these have been around for decades, the
-implementations provided by the Nettools Project focus on a few key aspects:</p>
+implementations provided by the Nettools Project focus on a few key aspects:
 
-<ul>
-  <li>
-    <p><strong>No Policy</strong>: Every network standard that is implemented by the Nettools
-               Project comes with a pure library implementation, that
-               provides access to the standard without placing additional
-               policies. These libraries provide networking standards that
-               are as close to the respective specifications as possible,
-               while placing limited to no restrictions on top.
-               On the contrary, these implementations are explicitly written
-               without any specific environments in mind, but allow any
-               networking manager or service to make use of them. This also
-               implies that the APIs allow full control of the protocol
-               behavior.</p>
-  </li>
-  <li>
-    <p><strong>Asynchronous</strong>: Since network safety is crucial today, all implementations
-                  and services are provided with a fully asynchronous API.
-                  This allows placing their instances into isolated
-                  environments, while mapping the API to an asynchronous
-                  message-based interface. That is, while the libraries
-                  provide in-process APIs, they are explicitly written in a
-                  way that they can be mapped easily to a message-based
-                  communication channel. Adopters of these libraries are
-                  highly recommended to isolate execution of these protocols
-                  and make use of the asynchronous API.</p>
-  </li>
-  <li>
-    <p><strong>21st Century</strong>: Networking standards like <em>DHCP</em> and <em>ACD</em> have been
-                  around for decades. Thus, they were written against
-                  hardware that was obsoleted many years ago. Modern
-                  hardware often no longer fits the models used in the
-                  70ths. Therefore, the nettools implementations try to port
-                  old standards to modern hardware, providing knobs to tune
-                  parameters that no longer apply in the 21st century (no,
-                  today it is no longer acceptable to wait 9s on local links
-                  for address conflict detection to finish).</p>
-  </li>
-  <li>
-    <p><strong>Linux-Only</strong>: Network configuration requires explicit knowledge of the
-                corresponding counter-parts in the kernel. While high-level
-                APIs may resemble each other across UNIX Derivatives, the
-                underlying technologies differ. The Nettools Project aligns
-                all implementations with modern Linux Kernel releases and
-                makes use of linux-only features to improve performance and
-                security of these implementations.</p>
-  </li>
-</ul>
+ * **No Policy**: Every network standard that is implemented by the Nettools
+                  Project comes with a pure library implementation, that
+                  provides access to the standard without placing additional
+                  policies. These libraries provide networking standards that
+                  are as close to the respective specifications as possible,
+                  while placing limited to no restrictions on top.
+                  On the contrary, these implementations are explicitly written
+                  without any specific environments in mind, but allow any
+                  networking manager or service to make use of them. This also
+                  implies that the APIs allow full control of the protocol
+                  behavior.
 
+ * **Asynchronous**: Since network safety is crucial today, all implementations
+                     and services are provided with a fully asynchronous API.
+                     This allows placing their instances into isolated
+                     environments, while mapping the API to an asynchronous
+                     message-based interface. That is, while the libraries
+                     provide in-process APIs, they are explicitly written in a
+                     way that they can be mapped easily to a message-based
+                     communication channel. Adopters of these libraries are
+                     highly recommended to isolate execution of these protocols
+                     and make use of the asynchronous API.
 
+ * **21st Century**: Networking standards like *DHCP* and *ACD* have been
+                     around for decades. Thus, they were written against
+                     hardware that was obsoleted many years ago. Modern
+                     hardware often no longer fits the models used in the
+                     70ths. Therefore, the nettools implementations try to port
+                     old standards to modern hardware, providing knobs to tune
+                     parameters that no longer apply in the 21st century (no,
+                     today it is no longer acceptable to wait 9s on local links
+                     for address conflict detection to finish).
+
+ * **Linux-Only**: Network configuration requires explicit knowledge of the
+                   corresponding counter-parts in the kernel. While high-level
+                   APIs may resemble each other across UNIX Derivatives, the
+                   underlying technologies differ. The Nettools Project aligns
+                   all implementations with modern Linux Kernel releases and
+                   makes use of linux-only features to improve performance and
+                   security of these implementations.
+{% endcapture %}
+{{ overview | markdownify }}
 
 <h2 id="projects">Projects</h2>
 <ul>
-
-
-
+{% assign projects_name = "projects_" | append: site.title %}
+{% assign projects = site[projects_name] | sort: 'title' %}
+{% for project in projects %}
   <li>
     <p>
-      <a href="/n-acd/"><strong>n-acd</strong></a>:
-      <em>IPv4 Address Conflict Detection</em>
+      <a href="{{ project.url | relative_url }}"><strong>{{ project.title }}</strong></a>:
+      <em>{{ project.description }}</em>
     </p>
-    <p>The <em>n-acd</em> project implements the <em>IPv4 Address Conflict Detection</em> standard
-as defined in <em>RFC-5227</em>. The state machine is implemented in a shared library
-and provides a stable <em>ISO-C11</em> API. The implementation is linux-only and
-relies heavily on the API behavior of recent linux kernel releases.</p>
-
+    {{ project.excerpt }}
       <ul>
-        <li><strong>Repository</strong>: <a href="https://github.com/nettools/n-acd">@github</a></li>
+        <li><strong>Repository</strong>: <a href="https://github.com/{{ site.title }}/{{ project.title }}">@github</a></li>
       </ul>
   </li>
-
-  <li>
-    <p>
-      <a href="/n-dhcp4/"><strong>n-dhcp4</strong></a>:
-      <em>Dynamic Host Configuration Protocol for IPv4</em>
-    </p>
-    <p>The n-dhcp4 project implements the IPv4 Dynamic Host Configuration Protocol as
-defined in RFC-2132+.</p>
-
-      <ul>
-        <li><strong>Repository</strong>: <a href="https://github.com/nettools/n-dhcp4">@github</a></li>
-      </ul>
-  </li>
-
-  <li>
-    <p>
-      <a href="/n-ipv4ll/"><strong>n-ipv4ll</strong></a>:
-      <em>IPv4 Link-Local Address Selection</em>
-    </p>
-    <p>The <em>n-ipv4ll</em> project implements link-local address selection for IPv4 as
-defined in <em>RFC-3927</em>. The implementation is linux-only and relies on modern
-linux kernel behavior and features.</p>
-
-      <ul>
-        <li><strong>Repository</strong>: <a href="https://github.com/nettools/n-ipv4ll">@github</a></li>
-      </ul>
-  </li>
-
+{% endfor %}
 </ul>
 
+{% capture underview %}
+## Maintenance
 
+All nettools projects are released under the terms of the *Apache Software
+License 2.0, Copyright © 2015-2019 Red Hat, Inc.* as well as the terms of the
+*Lesser General Public License 2.1+*.
 
-<h2 id="maintenance">Maintenance</h2>
-
-<p>All nettools projects are released under the terms of the <em>Apache Software
-License 2.0, Copyright © 2015-2019 Red Hat, Inc.</em> as well as the terms of the
-<em>Lesser General Public License 2.1+</em>.</p>
-
-<ul>
-  <li><strong>License</strong>: <em>Apache Software License 2.0</em></li>
-  <li><strong>License</strong>: <em>Lesser General Public License 2.1+</em></li>
-  <li><strong>Maintainers</strong>: <a href="https://github.com/dvdhrm">David Rheinsberg</a>,
-                 <a href="https://github.com/teg">Tom Gundersen</a></li>
-  <li><strong>Mailing-List</strong>: <em>nettools-devel</em> <a href="https://groups.google.com/forum/#!forum/nettools-devel">@googlegroups</a></li>
-</ul>
-
-
-
-</article>
-
-    </main>
-
-    <footer class="tc pv3 bt bb b--light-silver bg-light-gray">
-<a href="mailto:nettools-devel@googlegroups.com"><i class="media-icon email"></i></a>
-<a href="https://github.com/nettools"><i class="media-icon github"></i></a>
-
-    </footer>
-  </body>
-</html>
+ * **License**: *Apache Software License 2.0*
+ * **License**: *Lesser General Public License 2.1+*
+ * **Maintainers**: [David Rheinsberg](https://github.com/dvdhrm),
+                    [Tom Gundersen](https://github.com/teg)
+ * **Mailing-List**: *nettools-devel* [@googlegroups](https://groups.google.com/forum/#!forum/nettools-devel)
+{% endcapture %}
+{{ underview | markdownify }}

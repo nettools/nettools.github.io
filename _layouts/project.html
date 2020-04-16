@@ -1,0 +1,36 @@
+---
+layout: root
+style_pair_key: "fl cl mr2 b"
+---
+<article>
+  <h1>{{ page.title }}</h1>
+
+  <dl class="ml4">
+    <dt class="{{ layout.style_pair_key }}">Repository:</dt>
+    <dd>
+      <a href="https://github.com/{{ site.title }}/{{ page.title }}">@GitHub</a>
+    </dd>
+    <dt class="{{ layout.style_pair_key }}">Issue-Tracker:</dt>
+    <dd>
+      <a href="https://github.com/{{ site.title }}/{{ page.title }}/issues">@GitHub</a></li>
+    </dd>
+{% if page.documentation %}
+    <dt class="{{ layout.style_pair_key }}">Documentation:</dt>
+    <dd>
+      {{ page.documentation }}
+    </dd>
+{% endif %}
+{% if page.licenses %}
+    <dt class="{{ layout.style_pair_key }}">Licenses:</dt>
+    <dd class="cl">
+      <ul class="ma0">
+{% for license in page.licenses %}
+        <li class="i">{{ license }}</li>
+{% endfor %}
+      </ul>
+    </dd>
+{% endif %}
+  </dl>
+
+{{ content }}
+</article>
